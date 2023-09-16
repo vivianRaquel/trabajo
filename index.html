@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteo de Números Aleatorios</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ffcc00, #ff6600); /* Fondo de colores degradados */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente blanco */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #logo {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            display: block;
+            cursor: pointer; /* Cambia el cursor al puntero al pasar sobre el logo */
+        }
+
+        #number {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="https://isanagustin.edu.pe/portal/" target="_blank">
+            <img id="logo" src="logotipo.png" alt="Logo">
+        </a>
+        <h1>Sorteo de Números Aleatorios</h1>
+        <p>Número actual:</p>
+        <div id="number">0</div>
+        <button id="startButton" onclick="startSorteo()">Iniciar</button>
+        <button id="stopButton" onclick="stopSorteo()" disabled>Detener</button>
+    </div>
+
+    <script>
+        let intervalId;
+
+        function startSorteo() {
+            document.getElementById('startButton').disabled = true;
+            document.getElementById('stopButton').disabled = false;
+            
+            intervalId = setInterval(function() {
+                const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+                document.getElementById('number').textContent = numeroAleatorio;
+            }, 1000);
+        }
+
+        function stopSorteo() {
+            document.getElementById('startButton').disabled = false;
+            document.getElementById('stopButton').disabled = true;
+            
+            clearInterval(intervalId);
+        }
+    </script>
+    <h1>Vivian Alarcón Diaz</h1>
+</body>
+</html>
